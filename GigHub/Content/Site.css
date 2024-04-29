@@ -18,3 +18,31 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* Bootstrap overrides */
+.navbar {
+    background-color: #ff4342;
+}
+
+.nav-link {
+    color: white;
+}
+
+.navbar-brand {
+    color: white;
+    font-weight: 700;
+}
+
+.btn {
+    padding: 7px 20px;
+    border-radius: 9px;
+    font-size: 16px;
+}
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: none;
+}
