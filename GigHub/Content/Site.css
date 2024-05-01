@@ -46,3 +46,11 @@ textarea {
     outline: 0;
     box-shadow: none;
 }
+
+.form-select:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: none;
+}

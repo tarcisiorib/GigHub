@@ -10,17 +10,17 @@
     @Html.AntiForgeryToken()
     <div class="mb-3">
         @Html.LabelFor(g => g.Venue, htmlAttributes: new { @class = "form-label" })
-        @Html.EditorFor(g => g.Venue, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.EditorFor(g => g.Venue, new { htmlAttributes = new { @class = "form-control", autofocus = "autofocus" } })
         @Html.ValidationMessageFor(g => g.Venue, "", new { @class = "text-danger" })
     </div>
     <div class="mb-3">
         @Html.LabelFor(g => g.Date, htmlAttributes: new { @class = "form-label" })
-        @Html.EditorFor(g => g.Date, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.EditorFor(g => g.Date, new { htmlAttributes = new { @class = "form-control", placeholder = "eg 1 jan 2024" } })
         @Html.ValidationMessageFor(g => g.Date, "", new { @class = "text-danger" })
     </div>
     <div class="mb-3">
         @Html.LabelFor(g => g.Time, htmlAttributes: new { @class = "form-label" })
-        @Html.EditorFor(g => g.Time, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.EditorFor(g => g.Time, new { htmlAttributes = new { @class = "form-control", placeholder = "eg 20:00" } })
         @Html.ValidationMessageFor(g => g.Time, "", new { @class = "text-danger" })
     </div>
     <div class="mb-3">
