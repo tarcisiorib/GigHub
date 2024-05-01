@@ -19,7 +19,9 @@ namespace GigHub.Controllers
 
         public ActionResult Index()
         {
-            var model = _context.Gigs.Include(g => g.Artist)
+            var model = _context.Gigs
+                .Include(g => g.Artist)
+                .Include(g => g.Genre)
                 .Where(g => g.Date > DateTime.Now)
                 .ToList();
 
