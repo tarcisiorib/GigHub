@@ -19,6 +19,10 @@ textarea {
     max-width: 280px;
 }
 
+.voffset {
+    margin-top: 30px;
+}
+
 /* Bootstrap overrides */
 .navbar {
     background-color: #ff4342;
