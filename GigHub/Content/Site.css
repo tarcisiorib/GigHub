@@ -111,3 +111,12 @@ textarea {
     position: absolute;
     right: 0;
 }
+
+.gigs > li .actions {
+    font-size: 15px;
+    display: none;
+}
+
+.gigs > li:hover .actions {
+    display: block;
+}
