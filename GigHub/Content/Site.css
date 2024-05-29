@@ -37,6 +37,20 @@ textarea {
     font-weight: 700;
 }
 
+.navbar-nav .notifications {
+    position: relative;
+}
+
+.navbar-nav .notifications .badge {
+    position: absolute;
+    right: -4px;
+    top: 11px;
+}
+
+.text-bg-light {
+    color: #ff4342 !important;
+}
+
 .btn {
     /*padding: 7px 20px;
     border-radius: 9px;*/
@@ -119,4 +133,18 @@ textarea {
 
 .gigs > li:hover .actions {
     display: block;
+}
+
+ul.notifications {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul.notifications > li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0px;
+}
+
+ul.notifications > li:last-child {
+    border-bottom: none;
 }

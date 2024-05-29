@@ -32,8 +32,58 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)
+    <script type="text/x-template" id="notifications-template">
+        <ul class="notifications">
+            <%
+            _.each(notifications, function(notification) {
+                if (notification.type == 3) { %>
+                    <li><%= notification.gig.artist.name %> canceled the gig at <%= notification.gig.venue %> in <%= moment(notification.gig.date).format("D MMM HH:mm") %></li>
+                <% }
+                else if (notification.type == 2) {
+                    var changes = [],
+                        originalValues = [],
+                        newValues = [];
+                    
+                    if (notification.originalVenue != notification.gig.venue) {
+                        changes.push('venue');
+                        originalValues.push(notification.originalVenue);
+                        newValues.push(notification.gig.venue);
+                    }
+                    
+                    if (notification.originalDateTime != notification.gig.date) {
+                        changes.push('date/time');
+                        originalValues.push(moment(notification.originalDateTime).format("D MMM HH:mm"));
+                        newValues.push(moment(notification.gig.date).format("D MMM HH:mm"));
+                    }
+                %>
+                    <li><%= notification.gig.artist.name %> has changed the <%= changes.join(' and ') %> of the gig from <% originalValues.join('/') %> to <%= newValues.join('/') %></li>
+                <%
+                }
+            })
+            %>
+        </ul>
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.getJSON("/api/notifications", function (notifications) {
+                $(".js-notifications-count").text(notifications.length);
+                if (notifications.length > 0) {
+                    $(".js-notifications-count").removeClass("visually-hidden");
+                }
+
+                $(".notifications").popover({
+                    html: true,
+                    title: "Notifications",
+                    content: function () {
+                        var compiled = _.template($("#notifications-template").html());
+                        return compiled({ notifications: notifications });
+                    },
+                    placement: "bottom"
+                });
+            });
+        });
+    </script>
 </body>
 </html>
