@@ -1,4 +1,4 @@
-﻿@model GigHub.ViewModels.GigDetailsViewModel
+﻿@model GigHub.Core.ViewModels.GigDetailsViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -10,19 +10,27 @@
     {
         if (Model.IsFollowing)
         {
-            <button class="btn btn-info">Following</button>
+            <button class="btn btn-info js-toggle-follow" data-user-id="@Model.Gig.ArtistId">Following</button>
         }
         else
         {
-            <button class="btn btn-light border">Follow</button>
+            <button class="btn btn-light border js-toggle-follow" data-user-id="@Model.Gig.ArtistId">Follow</button>
         }
     }
 </h2>
 <p>
-    Performing at @Model.Gig.Venue on @Model.Gig.Date.ToString("d MMM") at @Model.Gig.Date.ToString("HH:mm")
+    Performing at @Model.Gig.Venue on @Model.Gig.Date.ToString("d MMM yy") at @Model.Gig.Date.ToString("HH:mm")
 </p>
 
 @if (User.Identity.IsAuthenticated && Model.IsAttending)
 {
     <p>You are going to this event.</p>
+}
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            GigDetailsController.init();
+        });
+    </script>
 }
